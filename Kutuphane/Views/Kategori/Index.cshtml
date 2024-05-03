@@ -1,0 +1,33 @@
+﻿@using Kutuphane.Models;
+@model List<KategoriModel>;
+<h2>Kategoriler</h2>
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Kategori Adı</th>
+            <th>Kitap Adeti</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ktg in Model)
+        {
+            <tr>
+                <td>@ktg.Ad</td>
+                <td>@(ktg.Kitaplar != null ? ktg.Kitaplar.Count() : 0)</td>
+                <td><button class="guncelle btn btn-custom" value="@ktg.Id">Güncelle</button></td>
+                <td><button class="sil btn btn-danger" value="@ktg.Id">Sil</button></td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Kategori Adı</th>
+            <th>Kitap Adeti</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </tfoot>
+</table>

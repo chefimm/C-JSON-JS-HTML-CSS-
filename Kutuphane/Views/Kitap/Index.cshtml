@@ -1,0 +1,51 @@
+﻿@using Kutuphane.Models;
+@model List<KitapModel>;
+
+@{
+    string kategoriler = "";
+}
+<h2>Kitaplar</h2>
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Kitap Isbn</th>
+            <td>Kategoriler</td>
+            <th>Kitap Adı</th>
+            <th>Kitap Adeti</th>
+            <th>Yazar</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kitap in Model)
+        {
+            <tr>
+                <td>@kitap.Isbn</td>
+                <td>
+                    @foreach (var kategori in kitap.Kategoriler)
+                    {
+                        kategoriler += kategori.Ad + ",";
+                    }
+                    @kategoriler
+                </td>
+                <td>@kitap.Ad</td>
+                <td>@kitap.Adet</td>
+                <td>@kitap.Yazar.Ad</td>
+                <td><button class="guncelle btn btn-custom" value="@kitap.Id">Güncelle</button></td>
+                <td><button class="sil btn btn-danger" value="@kitap.Id">Sil</button></td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Kitap Isbn</th>
+            <td>Kategoriler</td>
+            <th>Kitap Adı</th>
+            <th>Kitap Adeti</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </tfoot>
+</table>
